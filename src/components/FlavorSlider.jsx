@@ -7,31 +7,31 @@ import { useMediaQuery } from "react-responsive";
 const FlavorSlider = () => {
   const sliderRef = useRef();
 
-  const isTablet = useMediaQuery({
-    query: "(max-width: 1024px)",
-  });
+  const isTablet = useMediaQuery({                                             // 1. Lógica responsiva
+    query: "(max-width: 1024px)",                                              // detecta si el ancho de la pantalla es de 1024 px o menos
+  });                                                                          // Esto es importante porque en dispositivos móviles no hay scroll horizontal
 
   useGSAP(() => {
-    const scrollAmount = sliderRef.current.scrollWidth - window.innerWidth;
+    const scrollAmount = sliderRef.current.scrollWidth - window.innerWidth;    // Se calcula la distancia total que se puede desplazar horizontalmente (scrollWidth) y se le resta el ancho de la ventana (innerWidth). Esto da la cantidad exacta de píxeles necesarios para mostrar todo el contenido horizontal
 
-    if (!isTablet) {
+    if (!isTablet) {                                                           // 2. Animación de scroll horizontal (solo para escritorio)
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: ".flavor-section",
-          start: "2% top",
-          end: `+=${scrollAmount + 1500}px`,
-          scrub: true,
-          pin: true,
+          trigger: ".flavor-section",                                                                                    
+          start: "2% top",                                                     // La animación comienza cuando el 2% superior de la sección llega al top del viewport.
+          end: `+=${scrollAmount + 1500}px`,                                   // La animación termina se llega al final del scrollAmount. Se le suma 1500 para alargar el scroll
+          scrub: true,                                                         // Vincula el progreso de la animación directamente con la barra de scroll
+          pin: true,                                                           // "Fija" la sección .flavor-section en la pantalla mientras la animación se ejecuta. El usuario sigue haciendo scroll vertical, pero la sección permanece visible.
         },
       });
 
       tl.to(".flavor-section", {
-        x: `-${scrollAmount + 1500}px`,
+        x: `-${scrollAmount + 1500}px`,                                        // Esta es la animación en sí. Mueve toda la sección.flavor-section` hacia la izquierda.
         ease: "power1.inOut",
       });
     }
 
-    const titleTl = gsap.timeline({
+    const titleTl = gsap.timeline({                                            // 3. Animación de parallax para los títulos
       scrollTrigger: {
         trigger: ".flavor-section",
         start: "top top",
