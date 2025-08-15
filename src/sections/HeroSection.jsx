@@ -37,7 +37,24 @@ const HeroSection = () => {
         },
         "-=0.5"
       );
-  })
+
+    const heroTl = gsap.timeline({
+      scrollTrigger: {                       // Aplicamos un ScrollTrigger a la sección hero-container
+        trigger: ".hero-container",          // El elemento que dispara la animación.
+        start: "1% top",                     // La animación empieza cuando el 1% del trigger toca el top del viewport.
+        end: "bottom top",                   // La animación termina cuando la parte inferior del trigger toca el top del viewport.
+        scrub: true,                         // Vincula la animación al progreso del scroll.
+      },
+    });
+
+    heroTl.to(".hero-container", {
+      rotate: 7,                             // Conforme hacemos scroll, rotamos el hero-container desde su posicion incial hasta 0.7 grados
+      scale: 0.9,                            // y aplicandole un efecto de escala de 0.9
+      yPercent: 30,                          // asi como un desplazamiento vertical de 30%
+      ease: "power1.inOut",
+    });
+  });
+  
 
   return (
     <section className="bg-main-bg">
