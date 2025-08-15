@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import { ScrollSmoother, ScrollTrigger } from 'gsap/all';
 import { useGSAP } from '@gsap/react';
 import MessageSection from './sections/MessageSection';
+import FlavorSection from './sections/FlavorSection';
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -24,7 +25,7 @@ const App = () => {
         <div id="smooth-content">
           <HeroSection />
           <MessageSection />
-          <div className='h-dvh border border-red-500' />
+          <FlavorSection />
         </div>
       </div>
     </div>
