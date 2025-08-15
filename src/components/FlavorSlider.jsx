@@ -42,13 +42,13 @@ const FlavorSlider = () => {
 
     titleTl
       .to(".first-text-split", {
-        xPercent: -30,
+        xPercent: -30, // efecto parallax para el texto "We have 6"
         ease: "power1.inOut",
       })
       .to(
         ".flavor-text-scroll",
         {
-          xPercent: -22,
+          xPercent: -22, // efecto parallax para el texto "Freaking"
           ease: "power1.inOut",
         },
         "<"
@@ -56,7 +56,7 @@ const FlavorSlider = () => {
       .to(
         ".second-text-split",
         {
-          xPercent: -10,
+          xPercent: -10, // efecto parallax para el texto "delicious flavors"
           ease: "power1.inOut",
         },
         "<"
