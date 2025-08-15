@@ -1,9 +1,12 @@
 import React from 'react'
+import Navbar from './components/Navbar'
+import HeroSection from './sections/HeroSEction'
 
 const App = () => {
   return (
     <div>
-      <h1 className='font-bold md:text-red-500'>Hello World</h1>
+      <Navbar />
+      <HeroSection />
     </div>
   )
 }
