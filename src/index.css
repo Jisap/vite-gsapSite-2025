@@ -242,6 +242,20 @@ body::-webkit-scrollbar {
     .pin-box {
       @apply flex items-center justify-center w-full ps-52 absolute 2xl:bottom-32 bottom-[50vh];
 
+      /*
+        MOVIL
+          Cada tarjeta (.vd-card) tiene position: absolute dentro de su contenedor (.pin-box), 
+          que a su vez tiene position: relative. 
+          Cuando varios elementos con position: absolute están en el mismo contenedor y no se les 
+          aplica un sistema de layout como Flexbox o Grid, se apilan uno encima del otro en la 
+          esquina superior izquierda.
+        DESKTOP
+          En un punto de ruptura (breakpoint) de tamaño mediano (md:),
+          se activan las propiedades de Flexbox en el div.pin-box.
+          Clases como md: flex, md:justify-center y md:items-center le dicen al navegador: 
+          "a partir del tamaño 'md', deja de apilar los elementos y distribúyelos como una 
+          fila flexible, centrada horizontal y verticalmente" .
+      */
       .vd-card {
         @apply md:w-96 w-80 flex-none md:rounded-[2vw] rounded-3xl -ms-44 overflow-hidden 2xl:relative absolute border-[.5vw] border-milk;
       }

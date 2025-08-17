@@ -1,3 +1,4 @@
+
 import { useRef } from "react";
 import { cards } from "../constants";
 import { useGSAP } from "@gsap/react";
@@ -5,7 +6,6 @@ import gsap from "gsap";
 
 const TestimonialSection = () => {
 
-  const container = useRef(null);
   const vdRef = useRef([]);
 
   const handlePlay = (index) => {
@@ -21,7 +21,7 @@ const TestimonialSection = () => {
   useGSAP(() => {
     gsap.set(".testimonials-section", {         // Se posiciona toda la sección por encima de la sección anterior con un marginTop negativo (marginTop: "-140vh").
       marginTop: "-140vh",                      // Esto crea un efecto de solapamiento, donde esta sección de testimonios parece deslizarse por encima de la anterior a medida que el usuario hace scroll.  
-    });
+    });                                         // En tamaño movíl esta sección se sube tanto que tapa por completo los cuatro títulos de la sección anterior y solo queda visible su <p> inicial</p>
 
     const tl = gsap.timeline({                  // 1º Se crea un timeline para el scrollTrigger. Objetivo crear un efecto parallax con los títulos mientras la sección se desplaza hacia arriba.
       scrollTrigger: {
@@ -54,8 +54,10 @@ const TestimonialSection = () => {
     });
   });
 
+
+
   return (
-    <section className="testimonials-section">
+    <section className="testimonials-section relative z-10">
       <div className="absolute size-full flex flex-col items-center pt-[5vw]">
         <h1 className="text-black first-title">What's</h1>
         <h1 className="text-light-brown sec-title">Everyone</h1>

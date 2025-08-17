@@ -1,9 +1,11 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+
 import ClipPathTitle from "../components/ClipPathTitle";
 import VideoPinSection from "../components/VideoPinSection";
 
 const BenefitSection = () => {
+
 
   useGSAP(() => {
     const revealTl = gsap.timeline({
