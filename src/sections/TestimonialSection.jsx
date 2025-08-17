@@ -7,6 +7,16 @@ const TestimonialSection = () => {
 
   const vdRef = useRef([]);
 
+  const handlePlay = (index) => {
+    const video = vdRef.current[index];
+    video.play();
+  };
+
+  const handlePause = (index) => {
+    const video = vdRef.current[index];
+    video.pause();
+  };
+
   return (
     <section className="testimonials-section">
       <div className="absolute size-full flex flex-col items-center pt-[5vw]">
@@ -20,6 +30,8 @@ const TestimonialSection = () => {
           <div
             key={index}
             className={`vd-card ${card.translation} ${card.rotation}`}
+            onMouseEnter={() => handlePlay(index)}
+            onMouseLeave={() => handlePause(index)}
           >
             <video 
               ref={(el) => (vdRef.current[index] = el)}
