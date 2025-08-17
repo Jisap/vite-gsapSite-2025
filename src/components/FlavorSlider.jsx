@@ -84,7 +84,7 @@ const FlavorSlider = () => {
             />
 
             <img
-              src={`/images/${flavor.color}-elements.webp`}
+              src={`/images/${flavor.color}-elements.webp`}  // TODO: Animar los elements cons gsap (parallax)
               alt=""
               className="elements"
             />
