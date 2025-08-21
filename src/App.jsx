@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from './components/Navbar'
-import HeroSection from './sections/HeroSEction'
+import HeroSection from './sections/HeroSection'
 import gsap from 'gsap';
 import { ScrollSmoother, ScrollTrigger } from 'gsap/all';
 import { useGSAP } from '@gsap/react';
