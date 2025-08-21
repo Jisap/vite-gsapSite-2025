@@ -29,9 +29,22 @@ const FlavorSlider = () => {
         x: `-${scrollAmount + 1500}px`,                                        // Esta es la animación en sí. Mueve toda la sección.flavor-section` hacia la izquierda.
         ease: "power1.inOut",
       });
+
+      // 3. Animación de parallax para los elementos de frutas
+      gsap.to(".elements", {
+        x: 250, // Mueve los elementos hacia la derecha para crear el efecto parallax. Puedes ajustar este valor para cambiar la velocidad del efecto.
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".flavor-section",
+          start: "2% top",
+          end: `+=${scrollAmount + 1500}px`,
+          scrub: true,
+        },
+      });
     }
 
-    const titleTl = gsap.timeline({                                            // 3. Animación de parallax para los títulos
+    // 4. Animación de parallax para los títulos
+    const titleTl = gsap.timeline({
       scrollTrigger: {
         trigger: ".flavor-section",
         start: "top top",
@@ -84,7 +97,7 @@ const FlavorSlider = () => {
             />
 
             <img
-              src={`/images/${flavor.color}-elements.webp`}  // TODO: Animar los elements cons gsap (parallax)
+              src={`/images/${flavor.color}-elements.webp`}
               alt=""
               className="elements"
             />
